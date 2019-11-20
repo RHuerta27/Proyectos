@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Detecta Tipo de Archivo</title>
+
+
+<style type="text/css">
+#zonaArrastre {
+	background-color:rgb(51,153,204);
+	height:300px;
+}
+</style>
+
+<script>
+window.addEventListener("load",inicio);
+
+function inicio(){
+	var laZona = document.getElementById("zonaArrastre");
+	laZona.addEventListener("dragover",alEncima);
+	laZona.addEventListener("drop",alSoltar);
+}
+
+function alEncima(evento){
+	evento.stopPropagation();
+	evento.preventDefault();
+	evento.dataTransfer.dropEffect="copy";
+}
+
+function alSoltar(evento){
+	evento.stopPropagation();
+	evento.preventDefault();
+	var archivos = evento.dataTransfer.files;
+	//alert(archivos.length);
+	var elDiv =document.getElementById("info");
+
+for (var i=0; i< archivos.length; i++){
+	var elP = document.createElement("p");
+	var elTexto = document.createTextNode("Nombre: " + archivos[i].name + ", tipo:" + archivos[i].type + ", peso:" + archivos[i].size);
+	elP.appendChild(elTexto);
+	elDiv.appendChild(elP);
+		if (!archivos[i].type.match("image.*")){
+			continue;
+	}
+
+	var lector = new FileReader();
+		lector.readAsDataURL(archivos[i]);
+
+		lector.onload = (function (elArchivo){
+			return function(e){
+				var laImagen = document.createElement("img");
+
+					laImagen.src = e.target.result;
+					laImagen.height = 100;
+					zonaArrastre.appendChild(laImagen);
+			}
+		})(archivos[i])
+
+}
+}
+
+</script>
+
+</head>
+
+<body>
+<div id="zonaArrastre">
+Arrastra aqui Tu Archivo
+</div>
+<div ID="info">
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+
+<script>
+var db;
+window.addEventListener("load",inicio);
+
+function inicio(){
+	db = window.openDatabase("mibase2", "1.0", "base del curso", 2 * 1024 * 1024);
+	if(! db){
+		alert("no se pudo abrir la base");
+	}
+	db.transaction(crearTabla ,alError);
+}
+
+function crearTabla(trans){
+	trans.executeSql("CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY, nombre TEXT, apellido TEXT)",[], insertarUsuario, alError);
+}
+	 
+function alError(error){
+	alert("hubo error" + error.message + " : " + error.code);
+}
+
+
+function insertarUsuario(trans){
+	trans.executeSql("INSERT INTO usuarios (nombre, apellido) VALUES ('Hugo','huerta')");
+}
+
+function llamarDatos(){
+	db.transaction(pedirDatos,alError);
+}
+
+function pedirDatos(trans){
+	trans.executeSql("SELECT * FROM usuarios",[],mostrarDatos, alError);
+}
+
+function mostrarDatos(trans, resultado){
+//alert(resultado.rows.length);
+var cuenta = resultado.rows.length;
+var elDiv = document.getElementById("info");
+ 	for (var i=0; i < cuenta ; i++){
+	var elP = document.createElement("p");
+	var elTexto = document.createTextNode(resultado.rows.item(i)['id'] + " " + resultado.rows.item(i)['apellido']);
+	elP.appendChild(elTexto);
+	elDiv.appendChild(elP);
+	}
+	
+	
+}
+
+
+
+
+
+</script>
+
+</head>
+
+<body>
+<button onClick="llamarDatos()"> Llamar datos</button>
+<div id="info"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+
+<script>
+window.addEventListener("load",inicio);
+var contexto;
+
+function inicio(){
+	contexto= document.getElementById("micanvas").getContext("2d");
+//	contexto.drawImage(foto,10,10);
+	//contexto.drawImage(foto,10,10,100,80);
+		//contexto.drawImage(foto,50,50,60,60,0,0,120,120);
+		foto.addEventListener("mousemove",zomear);
+	}
+	
+	function zomear(evento){
+		var posX= evento.clientX;
+		var posY= evento.clientY;
+		contexto.drawImage(foto,posX,posY,60,60,0,0,120,120);
+		micanvas.style.left=(posX+5)+"px";
+		micanvas.style.top=(posY+5)+"px";
+			
+		}
+</script>
+
+
+<style>
+      #micanvas{
+		  background-color:yellow;
+		  position:absolute;
+		  border-radius:60px;
+		  border:2px solid red;
+		  box-shadow:5px 5px 5px #999999;
+	  }
+		  
+    </style>
+
+
+
+
+</head>
+
+<body>
+<img src='http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg' id="foto"/>
+<canvas id="micanvas" width="120" height="120">
+</body>
+</html>

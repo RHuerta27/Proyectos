@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+
+<style>
+fieldset{
+	border:solid 2px #CCFF00;
+	border-radius:10px;
+	background-color:rgb(204,204,204);
+}
+
+legend{
+	font:Verdana, Geneva, sans-serif;
+	font-weight:bold;
+	border:solid 2px #CCFF00;
+	border-radius:10px;
+	background-color:rgb(204,204,204);
+}
+	
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+<form>
+<fieldset>
+<legend>datosprincipales</legend>
+<label for="Nombre">Nombre<input type="text" placeholder="pon tu nombre"/>
+mail:<input type="mail" autofocus/><br/>
+tel:<input type="tel" /><br/>
+mail:<input type="mail"/><br/>
+url:<input type="url" /><br/>
+</fieldset><br/><br/><br/><br/><br/>
+Fecha:<input type="date" /><br/>
+Fecha:<input type="day" /><br/>
+
+
+Fecha:<input type="month" /><br/>
+Fecha:<input type="year" /><br/>
+color:<input type="color" /><br/>
+numero:<input type="number" max="20"  min="2" step=".1" /><br/>
+Rango:<input type="range" max="20"  min="2" step=".1" /><br/>
+Buscar:<input type="search" /><br/>
+testo:<textarea rows"5" maxlength="254"></textarea><br/>
+Setxo:
+<br/>
+
+<fieldset>
+<input type="radio" name="sexo" value="F" />
+	 <input type="radio" name="sexo" value="F" checked /><br/>
+Pasatiempos<br/>
+Internet: <input type="checkbox" name="pasatiempo" value="Intenet"</><br/>
+Chaquetitas: <input type="checkbox" name="pasatiempo" value="Chaquetitas"</><br/>
+Chaquetotas: <input type="checkbox" name="pasatiempo" value="Chaquetotas"</><br/>
+patear perros: <input type="checkbox" name="pasatiempo" value="patear perros"</><br/>
+nada: <input type="checkbox" name="pasatiempo" value="nada"</><br/><br/><br/>
+</fieldset>
+ciudad:
+<select size="4" multiple >
+<option value="df">Distro</option>
+<option value="mex">edomex</option>
+<option value="canada">montreal</option>
+<option value="china">Shangai</option>
+
+
+</select><br/><br/>
+
+hola:<input type="hidden"/> <br/>
+hola:<input type="file"/> <br/>
+
+<!--mandamos guardar -->
+
+<button>Boton</button><br/>
+<input type="submit" value="enviar"/>
+<input type="reset" value="borrar"/>
+
+</form>
+
+
+</body>
+</html>
