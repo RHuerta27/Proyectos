@@ -1,0 +1,20 @@
+.listar-servicio-container {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+  }
+  
+  .servicios-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .servicios-list li {
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
